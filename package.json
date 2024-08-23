@@ -1,12 +1,41 @@
 {
   "name": "workshop_api",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build",
+    "lint": "eslint -c ./config/eslint.config.mjs --fix",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
   },
-  "keywords": [],
-  "author": "Amy Kapernick <amy@kapers.dev> (https://amyskapers.dev/)",
-  "license": "MIT",
-  "description": ""
+  "dependencies": {
+    "@azure/functions": "^4.5.0",
+    "@notionhq/client": "^2.2.15",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "eslint": "^9.8.0",
+    "eslint-plugin-import": "^2.29.1",
+    "notion-to-md": "^3.1.1",
+    "typescript-eslint": "^8.0.1"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^2.6.2",
+    "@stylistic/eslint-plugin-ts": "^2.6.2",
+    "@types/node": "^22.5.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4"
+  },
+  "overrides": {
+    "@typescript-eslint/eslint-plugin": {
+      "eslint": "^9.8.0"
+    },
+    "eslint-plugin-import": {
+      "eslint": "^9.8.0"
+    }
+  },
+  "main": "dist/src/{index.js,functions/*.js}"
 }
