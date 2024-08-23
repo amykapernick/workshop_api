@@ -6,6 +6,10 @@ const parseItems = (notionData) => {
 
 		if (!name) return;
 
+		if(name === 'track') {
+			console.log({...item.properties})
+		}
+
 		data.push({
 			name,
 			id: item.id,
@@ -15,7 +19,7 @@ const parseItems = (notionData) => {
 				mdn: item.properties.MDN?.url,
 			},
 			self_closing: item.properties['Self Closing']?.checkbox,
-			example: item.properties.Example?.checkbox,
+			example: item.properties.Example.checkbox,
 			content: item?.content || null
 		});
 	});
